@@ -30,7 +30,7 @@ func (h Handlers) HandleFunc(mux HasHandleFunc, pattern string, handler http.Han
     mux.HandleFunc(pattern, h.ServeHTTP)
 }
 
-func hello_world() http.HandlerFunc {
+func helloWorld() http.HandlerFunc {
   return func(w http.ResponseWriter, r *http.Request) {
     fmt.Println("Hello World")
   }
