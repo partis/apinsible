@@ -4,8 +4,6 @@ import (
   "fmt"
   "net/http"
   "github.com/golang/glog"
-  "os/exec"
-  "strings"
 )
 
 type HasHandleFunc interface { //this is just so it would work for gorilla and http.ServerMux
@@ -32,13 +30,14 @@ func (h Handlers) HandleFunc(mux HasHandleFunc, pattern string, handler http.Han
     mux.HandleFunc(pattern, h.ServeHTTP)
 }
 
-func swaggerGenerator(w http.ResponseWriter, r *http.Request) {
-  fmt.Println("Hello World")
+func hello_world() http.HandlerFunc {
+  return func(w http.ResponseWriter, r *http.Request) {
+    fmt.Println("Hello World")
+  }
 }
 
-
 func startServer() {
-  http.HandleFunc("/hello_world", helloWorld(swaggerGenerator, contextMap))
+  http.HandleFunc("/hello_world", helloWorld())
   http.ListenAndServe(":8080", nil)
   glog.Flush()
 }
