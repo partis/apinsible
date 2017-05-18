@@ -2,7 +2,6 @@ package main_test
 
 import (
   "testing"
-  "github.com/partis/apinsible"
   "net"
 )
 
