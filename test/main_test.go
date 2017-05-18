@@ -2,7 +2,7 @@ package main_test
 
 import (
   "testing"
-  "gitub.com/partis/apinsible"
+  "github.com/partis/apinsible"
   "net"
 )
 
