@@ -9,6 +9,7 @@ import (
 type HasHandleFunc interface { //this is just so it would work for gorilla and http.ServerMux
     HandleFunc(pattern string, handler func(w http.ResponseWriter, req *http.Request))
 }
+
 type Handler struct {
     http.HandlerFunc
     Enabled bool
@@ -32,7 +33,7 @@ func (h Handlers) HandleFunc(mux HasHandleFunc, pattern string, handler http.Han
 
 func helloWorld() http.HandlerFunc {
   return func(w http.ResponseWriter, r *http.Request) {
-    fmt.Println("Hello World")
+    fmt.Fprint(w, "Hello World")
   }
 }
 
